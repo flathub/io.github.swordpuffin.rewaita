@@ -20,7 +20,8 @@
         "--filesystem=~/.var/app/org.mozilla.firefox/.mozilla/firefox",
         "--filesystem=~/.var/app/io.gitlab.librewolf-community/.librewolf",
         "--filesystem=~/.var/app/net.waterfox.waterfox/.waterfox",
-        "--filesystem=~/snap/firefox/common/.mozilla/firefox"
+        "--filesystem=~/snap/firefox/common/.mozilla/firefox",
+        "--filesystem=~/.config/mozilla/firefox"
     ],
     "cleanup": [
         "/include",
@@ -60,7 +61,7 @@
                 {
                     "type" : "git",
                     "url" : "https://github.com/SwordPuffin/Rewaita.git",
-                    "tag" : "v1.1.3"
+                    "tag" : "v1.1.4"
                 }
             ]
         }
