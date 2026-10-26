@@ -1,7 +1,7 @@
 {
     "id": "io.github.swordpuffin.rewaita",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "50",
+    "runtime-version": "51",
     "sdk": "org.gnome.Sdk",
     "command": "rewaita",
     "finish-args": [
@@ -9,11 +9,15 @@
         "--socket=fallback-x11",
         "--device=dri",
         "--socket=wayland",
+	"--talk-name=ca.desrt.dconf",
+	"--env=GIO_EXTRA_MODULES=/app/lib/gio/modules/",
         "--filesystem=~/.config/autostart:create",
         "--filesystem=~/.config/gtk-3.0:create",
         "--filesystem=~/.config/gtk-4.0:create",
         "--filesystem=~/.local/share/themes:create",
         "--talk-name=org.gnome.Shell.Extensions",
+        "--talk-name=org.Cinnamon",
+        "--filesystem=~/.local/share/gtksourceview-5:create",
         "--filesystem=~/.mozilla/firefox",
         "--filesystem=~/.librewolf",
         "--filesystem=~/.waterfox",
@@ -33,6 +37,31 @@
         "/share/vala"
     ],
     "modules": [
+    	{
+	    "name": "dconf",
+	    "buildsystem": "meson",
+	    "config-opts": [
+		"-Dbash_completion=false",
+		"-Dman=false"
+	    ],
+	    "cleanup": [
+		"/include",
+		"/lib/pkgconfig",
+		"/libexec",
+		"/share/dbus-1"
+	    ],
+	    "sources": [
+		{
+		    "type": "archive",
+		    "url": "https://download.gnome.org/sources/dconf/51/dconf-51.0.tar.xz",
+		    "sha256": "e65c1b7867f836faad9f9ee04acf5c5a6cae2bbc784833fe093207e0cb590248"
+		},
+		{
+		    "type": "patch",
+		    "path": "dconf-override.patch"
+		}
+	    ]
+	},
         "python3-modules.json",
         {
             "name": "libportal",
@@ -41,8 +70,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flatpak/libportal.git",
-                    "tag": "0.9.1",
-                    "commit": "8f5dc8d192f6e31dafe69e35219e3b707bde71ce",
+                    "tag": "0.11.0",
+                    "commit": "e2e2b9545ed9464b00d5a5fd77d49d687ae4edbc",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "semantic"
@@ -61,7 +90,7 @@
                 {
                     "type" : "git",
                     "url" : "https://github.com/SwordPuffin/Rewaita.git",
-                    "tag" : "v1.1.7"
+                    "tag" : "v1.1.8"
                 }
             ]
         }
