@@ -1,39 +1,38 @@
-# 🎨 Rewaita
-
 <p align="center">
-  <img src="https://github.com/SwordPuffin/Rewaita/blob/main/data/icons/hicolor/scalable/apps/io.github.swordpuffin.rewaita.svg" width="400"/>
+  <img src="https://github.com/SwordPuffin/Rewaita/blob/main/data/icons/hicolor/scalable/apps/io.github.swordpuffin.rewaita.svg" width="200" height=200/>
 </p>
 
-#### <p align="center">Rewaita gives your Adwaita apps a fresh look by tinting them with popular color schemes.</p>
+<h1 align="center">Rewaita</h1>
+
+#### <p align="center">Change the look of Adwaita, without the hassle.</p>
+
 
 <br>
-<p align="center"> 
-    <a href="https://flathub.org/apps/io.github.swordpuffin.rewaita"> 
-       <img width="200" alt="Get it on Flathub" src="https://flathub.org/api/badge?svg&locale=en"/> 
-    </a>
-    <br/>
-    <br/>
-    (AUR build)
-    <br/>
-    <a href="https://aur.archlinux.org/packages/rewaita">
-        <img width="200" alt="Unofficial AUR build" src="https://img.shields.io/aur/version/rewaita?style=for-the-badge">
-    </a>
 
-  <br />
-  <br />
-  (OpenSUSE build)
-  <br />
+<h2 align="center">
+  <a href="https://github.com/SwordPuffin/Rewaita/wiki">Wiki</a>
+</h2>
+<div align="center">
+  <a href="https://flathub.org/apps/io.github.swordpuffin.rewaita">
+    <img width="200" alt="Get it on Flathub" src="https://flathub.org/api/badge?svg&locale=en"/>
+  </a>
+  <br/>
+  <a href="https://aur.archlinux.org/packages/rewaita">
+    <img width="280" alt="Unofficial AUR build" src="https://img.shields.io/aur/version/rewaita?style=for-the-badge">
+  </a>
+  <br/>
   <a href="https://build.opensuse.org/package/show/home:ericfrs/rewaita">
-    <img width="200" alt="Zypper Package" src="https://img.shields.io/badge/openSUSE-73BA25?logo=opensuse&logoColor=white">
+    <img width="250" alt="Zypper Package" src="https://img.shields.io/badge/openSUSE-73BA25?logo=opensuse&logoColor=white">
   </a>
-
   <br/>
-  <br/>
-  (NixOS build)
-  <br />
   <a href="https://search.nixos.org/packages?channel=unstable&show=rewaita&query=adwaita">
-    <img width="190" alt="NixOS Package" src="https://img.shields.io/badge/NixOS-5277C3?logo=nixos&logoColor=fff">
+    <img width="180" alt="NixOS Package" src="https://img.shields.io/badge/NixOS-5277C3?logo=nixos&logoColor=fff">
   </a>
+</div>
+
+<p align="center">
+  <img src="https://github.com/SwordPuffin/Rewaita/blob/main/data/screenshots/Screenshot1.png" width="450"/>
+  <img src="https://github.com/SwordPuffin/Rewaita/blob/main/data/screenshots/Screenshot2.png" width="425"/>
 </p>
 
 # ⬇️ Installation 
@@ -48,8 +47,13 @@
 flatpak install io.github.swordpuffin.rewaita
 ```
 ### AUR
+Using yay
 ```bash
-yay -s rewaita
+yay -S rewaita
+```
+Using paru
+```bash
+paru -S rewaita
 ```
 
 ### OpenSUSE
@@ -82,43 +86,72 @@ flatpak --user override --filesystem=xdg-config/gtk-3.0:rw
 flatpak --user override --filesystem=xdg-config/gtk-4.0:rw
 ```
 
-# 🖼️ Screenshots
+# 🐧 CLI Usage
 
-<p align="center">
-  <img src="https://github.com/SwordPuffin/Rewaita/blob/main/data/screenshots/Screenshot1.png" width="600"/>
-  <br><br>
-  <img src="https://github.com/SwordPuffin/Rewaita/blob/main/data/screenshots/Screenshot2.png" width="600"/>
-</p>
+>
+> Note: These commands will be different for non-Flatpak installations, but the flags should work the same.
+
+#### To set a theme:
+```bash
+flatpak run io.github.swordpuffin.rewaita --theme={theme name}
+```
+For 'theme name': it is the name in the app without any emojis, spaces are converted to dashes, and it is all in lowercase.
+
+So 'Dracula 🧛🏻‍♂️' would be 'dracula' and 'Material Palenight 🌙' would be 'material-palenight.
+
+#### To get all available themes:
+```bash
+flatpak run io.github.swordpuffin.rewaita --list
+```
 
 ---
 
 # 🐛 Known Bugs
+#### Theme did not go away after Rewaita was deleted:
+Run:
+```bash
+rm ~/.config/gtk-3.0/gtk.css
+rm -rf ~/.config/gtk-3.0/assets
+rm ~/.config/gtk-4.0/gtk.css
+```
 #### Gnome Shell theme is not generating:
-1. Power off your computer (like full shutdown, not restart).
-2. Turn it back on and try again.
-3. If it still doesn't generate:
-     1. Go into [Flatseal](https://flathub.org/en/apps/com.github.tchx84.Flatseal) and find Rewaita's page
-     2. Scroll down to filesystem permissions (you should see ~/.local/share/themes among "other files")
-     3. Change ~/.local/share/themes to: ~/.local/share/themes:create (just append ":create")
-     4. If it still doesn't work file an issue.
+Update Rewaita to v1.0.9 or greater. Or: 
+```bash
+mkdir -p $HOME/.local/share/themes
+```
+
+#### GTK-3.0 or GTK-4.0 theme is not generating:
+```bash
+mkdir -p $HOME/.config/gtk-3.0 && mkdir -p $HOME/.config/gtk-4.0
+```
+
+#### Autostart file is not generating:
+This error message would show when running Rewaita.
+
+> Traceback (most recent call last):
+>  File "/app/share/rewaita/rewaita/main.py", line 124, in on_background_response
+>    with open(os.path.join(GLib.getenv("HOME"), ".config", "autostart", "rewaita.desktop"), "w") as file:
+>         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> FileNotFoundError: [Errno 2] No such file or directory: '/home/(user)/.config/autostart/rewaita.desktop'
+```bash
+mkdir $HOME/.config/autostart
+```
 
 #### Application window opens but is empty:
-#### 1. Flatpak
+#### 1. Flatpak (pre-v1.0.9)
    
 Run:
-```
+```bash
 rm ~/.var/app/io.github.swordpuffin.rewaita/data/prefs.json
 ```
 #### 2. AUR
 See upstream [bug](https://github.com/SwordPuffin/Rewaita/issues/48) 
 
-Install xdg-desktop-portal-gtk with:
+Install xdg-desktop-portal-gnome with:
 ```bash
-sudo pacman -S xdg-desktop-portal-gtk
+sudo pacman -S xdg-desktop-portal-gnome
 ```
 Then reboot.
-
-  
 
 # 🤝 Contributing
 
@@ -149,3 +182,4 @@ NixOS maintainer: [Seth Flynn](https://github.com/getchoo)
 
 ## License
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
