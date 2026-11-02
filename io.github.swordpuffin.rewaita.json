@@ -74,7 +74,7 @@
                     "commit": "e2e2b9545ed9464b00d5a5fd77d49d687ae4edbc",
                     "x-checker-data": {
                         "type": "git",
-                        "tag-pattern": "semantic"
+                        "tag-pattern": "^([\\d.]+)$"
                     }
                 }
             ]
