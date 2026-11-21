@@ -25,14 +25,14 @@
     <img width="250" alt="Zypper Package" src="https://img.shields.io/badge/openSUSE-73BA25?logo=opensuse&logoColor=white">
   </a>
   <br/>
-  <a href="https://search.nixos.org/packages?channel=unstable&show=rewaita&query=adwaita">
+  <a href="https://search.nixos.org/packages?channel=unstable&show=rewaita">
     <img width="180" alt="NixOS Package" src="https://img.shields.io/badge/NixOS-5277C3?logo=nixos&logoColor=fff">
   </a>
 </div>
 
 <p align="center">
-  <img src="https://github.com/SwordPuffin/Rewaita/blob/main/data/screenshots/Screenshot1.png" width="450"/>
-  <img src="https://github.com/SwordPuffin/Rewaita/blob/main/data/screenshots/Screenshot2.png" width="425"/>
+  <img src="https://github.com/SwordPuffin/Rewaita/blob/main/.github/screenshots/Screenshot1.png" width="425"/>
+  <img src="https://github.com/SwordPuffin/Rewaita/blob/main/.github/screenshots/Screenshot2.png" width="425"/>
 </p>
 
 # ⬇️ Installation 
@@ -182,4 +182,5 @@ NixOS maintainer: [Seth Flynn](https://github.com/getchoo)
 
 ## License
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
 
