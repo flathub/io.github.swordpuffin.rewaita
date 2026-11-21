@@ -72,7 +72,7 @@
                     "type": "git",
                     "url": "https://github.com/flatpak/libportal.git",
                     "tag": "0.11.0",
-                    "commit": "e2e2b9545ed9464b00d5a5fd77d49d687ae4edbc",
+                    "commit": "fc4d62cfe131e8494c82f597f92b2234d584c367",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"
